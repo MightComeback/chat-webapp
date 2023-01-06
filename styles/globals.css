@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .center {
+    max-width: 64rem;
+    margin: 2rem auto;
+  }
+}
