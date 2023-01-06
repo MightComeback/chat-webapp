@@ -3,7 +3,7 @@ import MessageInput from "./components/MessageInput";
 
 const Page = () => {
   return (
-    <div className="w-full rounded-xl shadow-md flex flex-col">
+    <div className="rounded-xl shadow-md flex flex-col">
       <ChatComponent />
       <MessageInput />
     </div>

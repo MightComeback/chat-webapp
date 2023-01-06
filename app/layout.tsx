@@ -12,7 +12,7 @@ export default function RootLayout({
       <head />
       <body>
         <Provider>
-          <main className="center">
+          <main>
             <Header />
             {children}
           </main>

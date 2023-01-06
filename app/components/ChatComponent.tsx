@@ -9,7 +9,7 @@ const ChatComponent = async () => {
   const session = await unstable_getServerSession(authOptions);
 
   return (
-    <div className="py-16 px-4 overflow-auto flex flex-col-reverse">
+    <div className="center overflow-auto w-full py-16 flex flex-col-reverse">
       {messages
         ?.slice(0)
         .reverse()

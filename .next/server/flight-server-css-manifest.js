@@ -1,0 +1,1 @@
+self.__RSC_CSS_MANIFEST={"__entry_css__":{"/Users/ivan/Documents/GitHub/chat-webapp/app/page":["/Users/ivan/Documents/GitHub/chat-webapp/styles/globals.css"]},"/Users/ivan/Documents/GitHub/chat-webapp/app/layout.tsx":["/Users/ivan/Documents/GitHub/chat-webapp/styles/globals.css"]}
