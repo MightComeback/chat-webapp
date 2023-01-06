@@ -9,7 +9,6 @@ const MessageInput = () => {
 
   const reloadInput = () => {
     setInput("");
-    window.location.reload();
   };
 
   const uploadMessage = async (e: FormEvent<HTMLFormElement>) => {

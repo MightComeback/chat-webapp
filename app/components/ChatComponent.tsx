@@ -1,16 +1,34 @@
+"use client";
+
 import { Message } from "@prisma/client";
-import { unstable_getServerSession } from "next-auth";
-import { getMessages, getUserById } from "../../lib/messages";
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { clientPusher } from "../../pusher";
 import MessageComponent from "./MessageComponent";
 
-const ChatComponent = async () => {
-  const { messages } = await getMessages();
-  const session = await unstable_getServerSession(authOptions);
+const ChatComponent = ({ messages }: { messages: Message[] }) => {
+  const { data: session } = useSession();
+  var messageArray: Message[] = messages;
+
+  useEffect(() => {
+    console.log("it does");
+    const channel = clientPusher.subscribe("messages");
+
+    channel.bind("new-message", async (data: Message) => {
+      if (messages.find((message) => message.id === data.id)) return;
+      messageArray.push(data);
+      console.log(messageArray);
+    });
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+  }, [messageArray, clientPusher, messages]);
 
   return (
     <div className="center overflow-auto w-full py-16 flex flex-col-reverse">
-      {messages
+      {messageArray
         ?.slice(0)
         .reverse()
         .map((message) => (

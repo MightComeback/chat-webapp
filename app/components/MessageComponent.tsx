@@ -35,7 +35,7 @@ export default function MessageComponent({
           <p
             className={`text-xs font-extralight p-2 ${sentByUser && "order-1"}`}
           >
-            {message.createdAt?.toDateString()}
+            {message.createdAt?.toString()}
           </p>
         </div>
       </div>
