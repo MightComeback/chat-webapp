@@ -8,6 +8,8 @@ export default function MessageComponent({
   message: Message;
   sentByUser: boolean;
 }) {
+  const newDate = new Date(message.createdAt!);
+
   return (
     <div
       className={`p-2 shadow-md max-w-sm rounded-xl border text-sm m-2 text-left ${
@@ -35,7 +37,9 @@ export default function MessageComponent({
           <p
             className={`text-xs font-extralight p-2 ${sentByUser && "order-1"}`}
           >
-            {}
+            {newDate.toLocaleTimeString() +
+              " | " +
+              newDate.toLocaleDateString()}
           </p>
         </div>
       </div>
