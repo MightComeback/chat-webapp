@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Message } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -8,27 +9,25 @@ import MessageComponent from "./MessageComponent";
 
 const ChatComponent = ({ messages }: { messages: Message[] }) => {
   const { data: session } = useSession();
-  var messageArray: Message[] = messages;
+  const router = useRouter();
+  let messageArray: Message[] = messages;
+  const [allMessages, setAllMessages] = useState<Message[]>(messageArray);
 
   useEffect(() => {
-    console.log("it does");
     const channel = clientPusher.subscribe("messages");
 
     channel.bind("new-message", async (data: Message) => {
       if (messages.find((message) => message.id === data.id)) return;
       messageArray.push(data);
-      console.log(messageArray);
+      setAllMessages(messageArray);
+      console.log(allMessages);
+      router.push("/");
     });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [messageArray, clientPusher, messages]);
+  }, [messageArray, messages, clientPusher, allMessages]);
 
   return (
     <div className="center overflow-auto w-full py-16 flex flex-col-reverse">
-      {messageArray
+      {allMessages
         ?.slice(0)
         .reverse()
         .map((message) => (
