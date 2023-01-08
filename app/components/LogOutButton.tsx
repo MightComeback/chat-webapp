@@ -10,7 +10,7 @@ const LogOutButton = () => {
       {session?.user?.image && (
         <div className="flex p-2 items-center gap-4">
           <button
-            className="text-black border-2 border-black font-bold uppercase p-2 px-6 text-xs bg-white shadow-md rounded-xl"
+            className="text-white font-bold uppercase p-2 px-6 text-xs bg-white/10 shadow-xl rounded-xl"
             onClick={() => signOut()}
           >
             Sign Out

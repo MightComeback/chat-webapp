@@ -12,17 +12,17 @@ const LogInButton = () => {
           <Image
             src={session.user.image}
             alt={session.user.name!}
-            className="inline-block rounded-full shadow-md border border-gray-300"
+            className="inline-block rounded-full shadow-xl"
             width={40}
             height={40}
           />
-          <p className="font-bold hidden sm:inline-block">
+          <p className="font-bold hidden sm:inline-block text-white">
             {session.user.name}
           </p>
         </div>
       ) : (
         <button
-          className="text-black border-2 border-black font-bold uppercase p-2 px-6 text-xs bg-white shadow-md rounded-xl"
+          className="text-white shadow-xl font-bold uppercase p-2 px-6 text-xs bg-white/10 rounded-xl"
           onClick={() => signIn()}
         >
           log in

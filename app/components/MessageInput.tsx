@@ -41,12 +41,14 @@ const MessageInput = () => {
           className="flex-1
         border border-gray-300 rounded-lg
         focus:border-transparent px-5
-        py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+        py-3 disabled:opacity-50 disabled:cursor-not-allowed
+        bg-[#f2f2f2]"
         />
         <button
           type="submit"
           disabled={!input}
-          className="disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed text-black border-2 border-black font-bold uppercase p-2 sm:px-6 text-xs bg-white shadow-md rounded-xl"
+          className="disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed text-black border-2
+           border-black font-bold uppercase p-2 sm:px-6 text-xs bg-[#f2f2f2] shadow-md rounded-xl"
         >
           Send
         </button>
